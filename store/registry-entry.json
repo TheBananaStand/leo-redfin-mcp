@@ -1,0 +1,46 @@
+{
+  "name": "redfin-mcp",
+  "label": "Redfin",
+  "description": "Redfin listings, walk scores, mortgage rates and agents, installed at runtime — no rebuild.",
+  "icon": "map-pin",
+  "version": "1.0.0",
+  "author": "TheBananaStand",
+  "homepage": "https://github.com/TheBananaStand/leo-redfin-mcp",
+  "category": "package",
+  "mcp": {
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "https://github.com/TheBananaStand/leo-redfin-mcp/archive/PIN_ME.tar.gz"
+    ]
+  },
+  "descriptor": {
+    "fields": [
+      {
+        "key": "redfin_rapidapi_key",
+        "label": "RapidAPI Key",
+        "field_type": "password",
+        "required": true
+      }
+    ],
+    "entitlements": {
+      "settings_read": [
+        "redfin_rapidapi_key"
+      ],
+      "network": [
+        "unofficial-redfin.p.rapidapi.com"
+      ],
+      "sends": [
+        {
+          "to": "unofficial-redfin.p.rapidapi.com",
+          "classes": [
+            "search_queries",
+            "location"
+          ],
+          "purpose": "The place you are asking about — a city, ZIP or street address — plus any price and bedroom filters. Addresses are listed as location and not just as a search phrase, because searching for a home says where you live or intend to. No conversation, file or account data is attached."
+        }
+      ]
+    }
+  }
+}
